@@ -1,37 +1,12 @@
-/**
- * @param {number[]} nums
- * @return {number}
- */
 var removeDuplicates = function(nums) {
-    // if empty or size is 1 or 2
-    // if(!nums.length || nums.length==1 || nums.length==2)
-    // {
-    //     return nums;
-    // }
+    let k = 2;
 
-    let i=0;
-    let j=1;
-    let count=1;
-    let numReplaced=0;
-    while(i<nums.length)
-    {
-        if(nums[i]==nums[j])
-        {
-            count++;
-            if(count>2)
-            {
-                nums[j]=Infinity;
-                numReplaced++;
-            }
-            j++
-        }
-        else
-        {
-            i=j;
-            j++;
-            count=1;
+    for (let i = 2; i < nums.length; i++) {
+        if (nums[i] !== nums[k - 2]) {
+            nums[k] = nums[i];
+            k++;
         }
     }
-    console.log(nums.sort((a,b)=>a-b))
-    return nums.sort((a,b)=>a-b).length-numReplaced;
+
+    return k;
 };
