@@ -6,14 +6,15 @@ var reverseWords = function (s) {
     let left = 0;
     let right = s.length - 1;
     const chars = s.split("")
+
+    // reverse string
     while (left < right) {
-        // created a temp variable to keep words so that it won't override during swap
-        let temp = chars[left];
-        chars[left] = chars[right];
-        chars[right] = temp;
+        [chars[left],chars[right]] = [chars[right],chars[left]];
         left++;
         right--;
     }
+
+    // to reverse a single word
     let start = 0;
 
     for (let i = 0; i <= chars.length; i++) {
@@ -30,6 +31,7 @@ var reverseWords = function (s) {
             start = i + 1;
         }
     }
+    // to remove adjacent spaces;
     let i = 0
     while (i < chars.length) {
         if (chars[i] === " " && chars[i + 1] === " ") {
@@ -39,10 +41,13 @@ var reverseWords = function (s) {
 
         i++;
     }
+
+    // to remove head space
     while (chars[0] === " ") {
         chars.splice(0, 1);
     }
 
+    // to remove tail space
     while (chars[chars.length - 1] === " ") {
         chars.splice(chars.length - 1, 1);
     }
